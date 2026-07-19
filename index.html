@@ -2,86 +2,153 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Babe ❤️</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Babe ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Dancing+Script:wght@700&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <style>
+    /* Play button style */
+    #play-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff4b5c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
+      transition: transform 0.3s ease;
+    }
+
+    #play-btn:hover {
+      transform: scale(1.1);
+      background: #ff6f91;
+    }
+
+    /* Pulse animation when music is playing */
+    .playing {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 182, 193, 0.8); }
+      50% { transform: scale(1.2); box-shadow: 0 0 25px rgba(255, 105, 135, 1); }
+      100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 182, 193, 0.8); }
+    }
+
+    /* Romantic prompt style */
+    #music-prompt {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      font-family: 'Dancing Script', cursive;
+      color: #ff4b5c;
+      text-shadow: 0 0 8px rgba(255,182,193,0.7);
+      font-size: 18px;
+      opacity: 0;
+      animation: fadeIn 2s forwards 1s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Background Music -->
-    <audio id="bg-music" loop>
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
     <source src="assets/music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-    <canvas id="scene"></canvas>
+  <!-- Romantic Music Prompt -->
+  <div id="music-prompt">💫 Touch me… let love sing ❤️</div>
 
-    <div class="scroll-container">
-        <section class="panel hero">
-            <div class="content-box">
-                <h1 class="babe-title">VICTORIA</h1>
-                <p class="sparkle-text">Bae Tap the heart .</p>
-                <p class="sparkle-text">You are my universe.</p>
-                <div class="indicator">Scroll Down ↓</div>
-            </div>
-        </section>
+  <!-- Play Button -->
+  <button id="play-btn">❤️</button>
 
-        <section class="panel message">
-            <div class="glass-card">
-                <h2 class="dancing">My Darling...</h2>
-                <p>My love, before you, life was a quiet song waiting for its melody. Then you came and suddenly every heartbeat became music, every breath became poetry. You are not just the light in my world you are the world itself. My days begin with
-                    the thought of you and end with the dream of us, wrapped in forever.</p>
-                <p>You are the gentle sunrise that paints my mornings with hope, the steady moon that guards my nights with peace. In your eyes, I see galaxies in your smile, I find home. You are my anchor when storms rage, my wings when I long to fly and
-                    my safe place when the world feels too heavy.</p>
-                <p>I promise you, with every fiber of my being, that my love will never fade. It will grow stronger with each sunrise, deeper with each sunset, and eternal with every star that shines above us. You are my miracle, my destiny, my forever bae.</p>
-                <p>Forever yours, in this life and beyond… ❤️</p>
-                <p>...From your NANA YAW❤️.....</p>
-                <div class="floating-heart">❤️</div>
-            </div>
-        </section>
+  <canvas id="scene"></canvas>
 
-        <section class="panel final">
-            <div class="content-box">
-                <h2 class="cinzel">Forever & Always</h2>
-                <p>ENJOY YOUR Day babaaeeeee!</p>
-                <p>I LOVE YOU!</p>
-                <p>I'm the luckiest person in the world to have you 😘</p>
-            </div>
-        </section>
-    </div>
+  <div class="scroll-container">
+    <section class="panel hero">
+      <div class="content-box">
+        <h1 class="babe-title">VICTORIA</h1>
+        <p class="sparkle-text">Bae Tap the heart.</p>
+        <p class="sparkle-text">You are my universe.</p>
+        <div class="indicator">Scroll Down ↓</div>
+      </div>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <section class="panel message">
+      <div class="glass-card">
+        <h2 class="dancing">My Darling...</h2>
+        <p>My love, before you, life was a quiet song waiting for its melody. Then you came and suddenly every heartbeat became music, every breath became poetry. You are not just the light in my world you are the world itself. My days begin with the thought of you and end with the dream of us, wrapped in forever.</p>
+        <p>You are the gentle sunrise that paints my mornings with hope, the steady moon that guards my nights with peace. In your eyes, I see galaxies in your smile, I find home. You are my anchor when storms rage, my wings when I long to fly and my safe place when the world feels too heavy.</p>
+        <p>I promise you, with every fiber of my being, that my love will never fade. It will grow stronger with each sunrise, deeper with each sunset and eternal with every star that shines above us. You are my miracle, my destiny, my forever bae.</p>
+        <p>Forever yours, in this life and beyond… ❤️</p>
+        <p>...From your NANA YAW❤️.....</p>
+        <div class="floating-heart">❤️</div>
+      </div>
+    </section>
 
-    <!-- Music Control Script -->
-    <script>
-        window.addEventListener("DOMContentLoaded", () => {
-            const music = document.getElementById("bg-music");
-            let hasStarted = false;
+    <section class="panel final">
+      <div class="content-box">
+        <h2 class="cinzel">Forever & Always</h2>
+        <p>ENJOY YOUR Day babaaeeeee!</p>
+        <p>I LOVE YOU!</p>
+        <p>I'm the luckiest person in the world to have you 😘</p>
+      </div>
+    </section>
+  </div>
 
-            const startMusic = () => {
-                if (!hasStarted) {
-                    music.play().then(() => {
-                        console.log("Music started on interaction.");
-                    }).catch(err => {
-                        console.log("Play failed:", err);
-                    });
-                    hasStarted = true;
-                }
-            };
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 
-            // Trigger music on any interaction
-            window.addEventListener("scroll", startMusic);
-            window.addEventListener("click", startMusic);
-            window.addEventListener("keydown", startMusic);
-            window.addEventListener("touchstart", startMusic);
-        });
-    </script>
+  <!-- Music Control Script -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const music = document.getElementById("bg-music");
+      const playBtn = document.getElementById("play-btn");
+      let isPlaying = false;
+
+      // Play/Pause button control
+      playBtn.addEventListener("click", () => {
+        if (!isPlaying) {
+          music.play();
+          isPlaying = true;
+          playBtn.textContent = "⏸"; // pause icon
+          playBtn.classList.add("playing");
+        } else {
+          music.pause();
+          isPlaying = false;
+          playBtn.textContent = "❤️"; // heart icon
+          playBtn.classList.remove("playing");
+        }
+      });
+
+      // Also start music on any interaction
+      const startMusic = () => {
+        if (!isPlaying) {
+          music.play();
+          isPlaying = true;
+          playBtn.textContent = "⏸";
+          playBtn.classList.add("playing");
+        }
+      };
+
+      window.addEventListener("scroll", startMusic);
+      window.addEventListener("keydown", startMusic);
+      window.addEventListener("touchstart", startMusic);
+    });
+  </script>
 </body>
-
 </html>
