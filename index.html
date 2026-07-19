@@ -114,41 +114,30 @@
   <script src="script.js"></script>
 
   <!-- Music Control Script -->
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const music = document.getElementById("bg-music");
-      const playBtn = document.getElementById("play-btn");
-      let isPlaying = false;
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const music = document.getElementById("bg-music");
+    const playBtn = document.getElementById("play-btn");
+    let isPlaying = false;
 
-      // Play/Pause button control
-      playBtn.addEventListener("click", () => {
-        if (!isPlaying) {
-          music.play();
-          isPlaying = true;
+    // Play/Pause button control
+    playBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        music.play().then(() => {
           playBtn.textContent = "⏸"; // pause icon
           playBtn.classList.add("playing");
-        } else {
-          music.pause();
-          isPlaying = false;
-          playBtn.textContent = "❤️"; // heart icon
-          playBtn.classList.remove("playing");
-        }
-      });
-
-      // Also start music on any interaction
-      const startMusic = () => {
-        if (!isPlaying) {
-          music.play();
           isPlaying = true;
-          playBtn.textContent = "⏸";
-          playBtn.classList.add("playing");
-        }
-      };
-
-      window.addEventListener("scroll", startMusic);
-      window.addEventListener("keydown", startMusic);
-      window.addEventListener("touchstart", startMusic);
+        }).catch(err => {
+          console.log("Play failed:", err);
+        });
+      } else {
+        music.pause();
+        playBtn.textContent = "❤️"; // heart icon
+        playBtn.classList.remove("playing");
+        isPlaying = false;
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
