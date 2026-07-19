@@ -17,11 +17,11 @@
       color: white;
       border: none;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
+      width: 70px;
+      height: 70px;
+      font-size: 28px;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
+      box-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
       transition: transform 0.3s ease;
     }
 
@@ -44,12 +44,12 @@
     /* Romantic prompt style */
     #music-prompt {
       position: fixed;
-      bottom: 90px;
+      bottom: 100px;
       right: 20px;
       font-family: 'Dancing Script', cursive;
       color: #ff4b5c;
       text-shadow: 0 0 8px rgba(255,182,193,0.7);
-      font-size: 18px;
+      font-size: 20px;
       opacity: 0;
       animation: fadeIn 2s forwards 1s;
     }
@@ -69,10 +69,10 @@
   </audio>
 
   <!-- Romantic Music Prompt -->
-  <div id="music-prompt">💫 Touch the heart… let love sing ❤️</div>
+  <div id="music-prompt">💫 Touch the heart... let love sing ❤️</div>
 
   <!-- Play Button -->
-  <button id="play-btn">❤️</button>
+  <button id="play-btn">🔇</button>
 
   <canvas id="scene"></canvas>
 
@@ -118,23 +118,29 @@
     document.addEventListener("DOMContentLoaded", () => {
       const music = document.getElementById("bg-music");
       const playBtn = document.getElementById("play-btn");
-      let isPlaying = false;
+      let isMuted = true;
 
+      // Start music muted (autoplay allowed)
+      music.volume = 0.7;
+      music.muted = true;
+      music.play().then(() => {
+        playBtn.textContent = "🔇";
+        playBtn.classList.add("playing");
+      }).catch(err => {
+        console.warn("Autoplay blocked:", err);
+        playBtn.textContent = "❤️"; // fallback if blocked
+      });
+
+      // Button toggles mute/unmute
       playBtn.addEventListener("click", () => {
-        if (!isPlaying) {
-          music.play().then(() => {
-            playBtn.textContent = "⏸"; // pause icon
-            playBtn.classList.add("playing");
-            isPlaying = true;
-          }).catch(err => {
-            console.error("Playback error:", err);
-            alert("Please tap again to start the music 💖");
-          });
+        if (isMuted) {
+          music.muted = false;
+          playBtn.textContent = "🔊";
+          isMuted = false;
         } else {
-          music.pause();
-          playBtn.textContent = "❤️"; // heart icon
-          playBtn.classList.remove("playing");
-          isPlaying = false;
+          music.muted = true;
+          playBtn.textContent = "🔇";
+          isMuted = true;
         }
       });
     });
