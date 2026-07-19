@@ -69,7 +69,7 @@
   </audio>
 
   <!-- Romantic Music Prompt -->
-  <div id="music-prompt">💫 Touch me… let love sing ❤️</div>
+  <div id="music-prompt">💫 Touch the heart… let love sing ❤️</div>
 
   <!-- Play Button -->
   <button id="play-btn">❤️</button>
@@ -91,7 +91,7 @@
         <h2 class="dancing">My Darling...</h2>
         <p>My love, before you, life was a quiet song waiting for its melody. Then you came and suddenly every heartbeat became music, every breath became poetry. You are not just the light in my world you are the world itself. My days begin with the thought of you and end with the dream of us, wrapped in forever.</p>
         <p>You are the gentle sunrise that paints my mornings with hope, the steady moon that guards my nights with peace. In your eyes, I see galaxies in your smile, I find home. You are my anchor when storms rage, my wings when I long to fly and my safe place when the world feels too heavy.</p>
-        <p>I promise you, with every fiber of my being, that my love will never fade. It will grow stronger with each sunrise, deeper with each sunset and eternal with every star that shines above us. You are my miracle, my destiny, my forever bae.</p>
+        <p>I promise you, with every fiber of my being, that my love will never fade. It will grow stronger with each sunrise, deeper with each sunset, and eternal with every star that shines above us. You are my miracle, my destiny, my forever bae.</p>
         <p>Forever yours, in this life and beyond… ❤️</p>
         <p>...From your NANA YAW❤️.....</p>
         <div class="floating-heart">❤️</div>
@@ -114,30 +114,30 @@
   <script src="script.js"></script>
 
   <!-- Music Control Script -->
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const music = document.getElementById("bg-music");
-    const playBtn = document.getElementById("play-btn");
-    let isPlaying = false;
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const music = document.getElementById("bg-music");
+      const playBtn = document.getElementById("play-btn");
+      let isPlaying = false;
 
-    // Play/Pause button control
-    playBtn.addEventListener("click", () => {
-      if (!isPlaying) {
-        music.play().then(() => {
-          playBtn.textContent = "⏸"; // pause icon
-          playBtn.classList.add("playing");
-          isPlaying = true;
-        }).catch(err => {
-          console.log("Play failed:", err);
-        });
-      } else {
-        music.pause();
-        playBtn.textContent = "❤️"; // heart icon
-        playBtn.classList.remove("playing");
-        isPlaying = false;
-      }
+      playBtn.addEventListener("click", () => {
+        if (!isPlaying) {
+          music.play().then(() => {
+            playBtn.textContent = "⏸"; // pause icon
+            playBtn.classList.add("playing");
+            isPlaying = true;
+          }).catch(err => {
+            console.error("Playback error:", err);
+            alert("Please tap again to start the music 💖");
+          });
+        } else {
+          music.pause();
+          playBtn.textContent = "❤️"; // heart icon
+          playBtn.classList.remove("playing");
+          isPlaying = false;
+        }
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
